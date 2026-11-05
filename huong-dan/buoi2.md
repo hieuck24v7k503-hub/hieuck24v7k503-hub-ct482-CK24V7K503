@@ -142,7 +142,7 @@ DataNode 2               https://<tên-codespace>-9865.app.github.dev
 
 > 💡 Bên trong codespace, `curl -s localhost:8088` hay `curl -s localhost:19888` vẫn hoạt động (dùng để kiểm tra nhanh mà không cần trình duyệt). Liên kết nội bộ trong Web UI dạng `http://nodemanager1:8042/...`, `http://historyserver:19888/...` không mở được trên trình duyệt: thay phần `http://nodemanager1:8042` bằng địa chỉ của cổng 8042 (nodemanager2 → cổng 8043), `http://historyserver:19888` bằng địa chỉ cổng 19888, giữ nguyên phần đường dẫn phía sau.
 
-**Thông số tài nguyên YARN của cụm** (từ `conf/hadoop/*.xml`): mỗi NodeManager có 1792 MB và 2 vCore; container map 512 MB, reduce 768 MB, ApplicationMaster 512 MB. Các tuỳ chọn `--add-opens` cần cho Java 17 đã cấu hình sẵn trong `mapred-site.xml`. Trên máy codespace 2 nhân, các vCore này dùng chung 2 nhân thật nên job chạy chậm hơn máy phòng lab khoảng 1,5–2 lần.
+**Thông số tài nguyên YARN của cụm** (từ `conf/hadoop/*.xml`): mỗi NodeManager có 1792 MB và 2 vCore; container map 512 MB, reduce 768 MB, ApplicationMaster 512 MB. Các tuỳ chọn `--add-opens` cần cho Java 17 đã cấu hình sẵn trong `mapred-site.xml`. Trên máy codespace 2 nhân, các vCore này dùng chung 2 nhân thật nên job chạy chậm hơn máy phòng lab khoảng 1,3–2,2 lần.
 
 ## PHẦN 1: CHUẨN BỊ DỮ LIỆU TRÊN HDFS
 
