@@ -101,4 +101,4 @@ Hai lỗi phát hiện khi kiểm thử và đã xử lý trong script:
 - Đã chạy trọn Buổi 0–7 với 5 triệu dòng trên bản sao Dev Container (2 nhân / 8 GB): mọi bước đạt, không OOM. Buổi 7 (MLlib) khuyến nghị máy 4 nhân / 16 GB; trên 2 nhân phải mở PySpark một executor.
 - Đĩa lúc cao nhất: Buổi 1 ≈ 13 GB, Buổi 3 ≈ 16 GB (image Hive + Tez) — sát hoặc vượt 15 GB của tài khoản Free. `lab stop-extras` nay dọn dữ liệu tạm Tez.
 - `lab status` in thêm RAM cả máy, đĩa Docker, số dòng dữ liệu; `lab ui` thêm NodeManager/DataNode/RegionServer; `DATA_ROWS=5000000`; forward cổng 4041; `.gitignore` thêm `__pycache__/`, `*.pyc`, `.venv/`.
-- Package `ghcr.io/tttquyen/bigdata-lab` cần chuyển **Public** trước khi phát cho sinh viên (kiểm tra 05/11/2026: tải ẩn danh bị từ chối).
+- Package `ghcr.io/tttquyen/bigdata-lab` đã chuyển **Public** và repo đã bật **Template repository** (06/11/2026).

@@ -15,8 +15,8 @@ Trang dành cho giảng viên: chuẩn bị repo và image một lần mỗi h�
 | Hạng mục | Trạng thái | Việc cần làm |
 |---|---|---|
 | Repo `tttquyen/bigdatalab` | Public, nhánh `main` | — |
-| Bật *Template repository* | **Chưa bật** | Settings → General → tích **Template repository** |
-| Image `ghcr.io/tttquyen/bigdata-lab:2026.10` | Đã build bằng GitHub Actions; **package đang Private** (tải ẩn danh bị từ chối) | Packages → bigdata-lab → Package settings → **Change visibility → Public** |
+| Bật *Template repository* | Đã bật (06/11/2026) | — |
+| Image `ghcr.io/tttquyen/bigdata-lab:2026.10` | Đã build bằng GitHub Actions; package **Public** (06/11/2026, đã thử tải không đăng nhập: được) | — |
 | `LAB_IMAGE` trong `.devcontainer/cau-hinh.env` | `ghcr.io/tttquyen/bigdata-lab:2026.10` | — |
 | Codespace của GV trên Codespaces thật | 8/8 healthy, `lab test` 11/11 PASS (25/10/2026) | — |
 | Mã học phần trong repo | Image và cấu hình (Dockerfile, `conf/`, `scripts/`, docker-compose, cluster ID HDFS `CID-ct428-...`) còn ghi `CT428`; mã đúng là **CT482** | Giữ nguyên trong image/cấu hình (đổi sẽ phải build lại image); tài liệu (README, TESTING, hướng dẫn) và tên codespace đã đổi sang CT482 (06/11/2026) |
