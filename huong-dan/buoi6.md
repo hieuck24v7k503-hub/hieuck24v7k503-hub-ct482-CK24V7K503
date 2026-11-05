@@ -192,7 +192,7 @@ Tạo tệp `src/lab6/producer_retail.py` (trong VS Code của codespace):
 
 <!-- file: src/lab6/producer_retail.py -->
 ```python
-"""Producer mô phỏng luồng giao dịch bán lẻ thời gian thực (Buổi 6 - CT428).
+"""Producer mô phỏng luồng giao dịch bán lẻ thời gian thực (Buổi 6 - CT482).
 
 Đọc tuần tự retail_transactions.csv, thay cột ts bằng thời điểm hiện tại (UTC, ISO-8601)
 và gửi từng giao dịch dạng JSON vào Kafka, khóa (key) = store_id.
@@ -498,7 +498,7 @@ Tạo consumer Python `src/lab6/consumer_retail.py`. Mỗi tiến trình là m�
 
 <!-- file: src/lab6/consumer_retail.py -->
 ```python
-"""Consumer Python thuộc một consumer group (Buổi 6 - CT428).
+"""Consumer Python thuộc một consumer group (Buổi 6 - CT482).
 
 Mỗi tiến trình là một thành viên của group; in ra partition được gán sau mỗi lần rebalance
 và đếm số bản ghi nhận được theo partition.
@@ -674,7 +674,7 @@ Tạo tệp `src/lab6/streaming_console.py`:
 
 <!-- file: src/lab6/streaming_console.py -->
 ```python
-"""Structured Streaming: Kafka -> cửa sổ 5 phút + watermark 2 phút -> console (Buổi 6 - CT428)."""
+"""Structured Streaming: Kafka -> cửa sổ 5 phút + watermark 2 phút -> console (Buổi 6 - CT482)."""
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, expr, from_json, sum as _sum, count as _count, window
 
@@ -970,7 +970,7 @@ Tạo tệp `src/lab6/streaming_upsert.py` gồm hai phần nối tiếp nhau. P
 
 <!-- file: src/lab6/streaming_upsert.py (phần 1/2) -->
 ```python
-"""Structured Streaming + foreachBatch: upsert kết quả cửa sổ vào SQLite (Buổi 6 - CT428).
+"""Structured Streaming + foreachBatch: upsert kết quả cửa sổ vào SQLite (Buổi 6 - CT482).
 
 Bảng đích: /tmp/lab6/retail_agg.db (trong container spark-master, nơi chạy driver).
 Khóa nghiệp vụ: (window_start, category).

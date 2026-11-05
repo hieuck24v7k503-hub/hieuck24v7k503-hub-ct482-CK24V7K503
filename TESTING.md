@@ -1,11 +1,11 @@
-# TESTING.md — running isolated CT428 clusters (for lab porters / testers)
+# TESTING.md — running isolated CT482 clusters (for lab porters / testers)
 
 This host's Docker daemon is shared with other work. It already runs containers named
 `spark-master`, `spark-worker-1`, `pyspark-notebook` holding host ports 8080, 7077, 8081, 8888, 4040-4041.
 **Never stop, restart, remove or exec into them, and never prune.** Test clusters must use:
 
-1. a **unique project name** (`-p ct428t1`, `-p ct428t2`, `-p ct428t3`): network, volumes and
-   containers are then all scoped to that project (`ct428t1_default`, `ct428t1_namenode`, ...);
+1. a **unique project name** (`-p ct482t1`, `-p ct482t2`, `-p ct482t3`): network, volumes and
+   containers are then all scoped to that project (`ct482t1_default`, `ct482t1_namenode`, ...);
 2. a **unique `CT_PREFIX`** (`t1-`, `t2-`, `t3-`): container names become `t1-namenode`, `t1-spark-master`, ...
    (hostnames inside the network stay `namenode`, `spark-master`, ... so lab commands and URLs are unchanged);
 3. the **no-ports overrides** (`docker-compose.noports.yml`, `docker-compose.extras.noports.yml`):
@@ -19,12 +19,12 @@ The image `bigdata-lab:2026.10` is already built on this host — **do not rebui
 ```bash
 cd moi-truong-bigdata-lab
 export CT_PREFIX=t1-
-export DC="docker compose -p ct428t1 -f docker-compose.yml -f docker-compose.extras.yml \
+export DC="docker compose -p ct482t1 -f docker-compose.yml -f docker-compose.extras.yml \
            -f docker-compose.noports.yml -f docker-compose.extras.noports.yml"
 
 $DC up -d --wait --wait-timeout 600            # all 14 containers; ~30 s from scratch
 # core only:
-docker compose -p ct428t1 -f docker-compose.yml -f docker-compose.noports.yml up -d --wait
+docker compose -p ct482t1 -f docker-compose.yml -f docker-compose.noports.yml up -d --wait
 # a subset of extras (dependencies are pulled in automatically):
 $DC up -d --wait hiveserver2
 $DC ps
@@ -83,10 +83,10 @@ CT_PREFIX=t1- ./scripts-host/smoke_test.sh
 
 ```bash
 export CT_PREFIX=t1-
-docker compose -p ct428t1 -f docker-compose.yml -f docker-compose.extras.yml \
+docker compose -p ct482t1 -f docker-compose.yml -f docker-compose.extras.yml \
   -f docker-compose.noports.yml -f docker-compose.extras.noports.yml down -v
 # verify nothing of yours is left:
-docker ps -a --filter name=^t1- ; docker volume ls --filter name=ct428t1 ; docker network ls --filter name=ct428t1
+docker ps -a --filter name=^t1- ; docker volume ls --filter name=ct482t1 ; docker network ls --filter name=ct482t1
 ```
 
 `down -v` removes only that project's containers, network and named volumes. Keep the images

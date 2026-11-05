@@ -19,7 +19,7 @@ Trang dành cho giảng viên: chuẩn bị repo và image một lần mỗi h�
 | Image `ghcr.io/tttquyen/bigdata-lab:2026.10` | Đã build bằng GitHub Actions; **package đang Private** (tải ẩn danh bị từ chối) | Packages → bigdata-lab → Package settings → **Change visibility → Public** |
 | `LAB_IMAGE` trong `.devcontainer/cau-hinh.env` | `ghcr.io/tttquyen/bigdata-lab:2026.10` | — |
 | Codespace của GV trên Codespaces thật | 8/8 healthy, `lab test` 11/11 PASS (25/10/2026) | — |
-| Mã học phần trong repo | Repo và image ghi `CT428` (README, Dockerfile, cluster ID HDFS `CID-ct428-...`), mã đúng là **CT482** | Giữ nguyên trong image/cấu hình (đổi sẽ phải build lại image); tài liệu và tên codespace dùng CT482 |
+| Mã học phần trong repo | Image và cấu hình (Dockerfile, `conf/`, `scripts/`, docker-compose, cluster ID HDFS `CID-ct428-...`) còn ghi `CT428`; mã đúng là **CT482** | Giữ nguyên trong image/cấu hình (đổi sẽ phải build lại image); tài liệu (README, TESTING, hướng dẫn) và tên codespace đã đổi sang CT482 (06/11/2026) |
 | Xác minh giáo viên GitHub Education | Lần nộp 25/10/2026 bị từ chối do lệch tên | Xem mục Xác minh tài khoản giáo viên |
 
 > ⚠️ Khi package image còn Private, codespace của **sinh viên** không tải được image (codespace của GV tải được vì cùng chủ sở hữu). Khi đó `khoi-tao.sh` tự chuyển sang build từ Dockerfile: lần tạo đầu mất thêm khoảng 10 phút và tải ~1,5 GB từ máy chủ Apache cho **mỗi** sinh viên. Phải chuyển package sang Public trước Buổi 0.

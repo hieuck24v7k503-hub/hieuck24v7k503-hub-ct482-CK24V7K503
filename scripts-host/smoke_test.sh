@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Smoke test cho cụm CT428 đang chạy. Dùng: CT_PREFIX=t1- ./scripts-host/smoke_test.sh
+# Smoke test cho cụm CT482 đang chạy. Dùng: CT_PREFIX=t1- ./scripts-host/smoke_test.sh
 # (CT_PREFIX rỗng = cụm của sinh viên với tên container gốc). Chạy từ thư mục moi-truong-bigdata-lab/.
 set -u
 P="${CT_PREFIX:-}"

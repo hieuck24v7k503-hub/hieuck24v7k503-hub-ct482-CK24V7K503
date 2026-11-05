@@ -1,6 +1,6 @@
-# Môi trường thực hành CT428 – Xử lý dữ liệu lớn (bản 2026.10)
+# Môi trường thực hành CT482 – Xử lý dữ liệu lớn (bản 2026.10)
 
-Bộ môi trường Docker dùng chung cho các buổi thực hành 1–7 của học phần CT428. Toàn bộ cụm Hadoop/Spark chạy từ **một image tự build `bigdata-lab:2026.10`**; Hive, Kafka và MongoDB dùng image chính thức.
+Bộ môi trường Docker dùng chung cho các buổi thực hành 1–7 của học phần CT482. Toàn bộ cụm Hadoop/Spark chạy từ **một image tự build `bigdata-lab:2026.10`**; Hive, Kafka và MongoDB dùng image chính thức.
 
 | Thành phần | Phiên bản | Ghi chú |
 |---|---|---|
