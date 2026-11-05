@@ -4,3 +4,8 @@ data/*
 downloads/*
 !downloads/.gitkeep
 .env
+
+# tệp sinh ra khi chạy bài (Python trong container, môi trường ảo Buổi 6)
+__pycache__/
+*.pyc
+.venv/

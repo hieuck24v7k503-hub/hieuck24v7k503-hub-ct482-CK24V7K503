@@ -1,4 +1,6 @@
-# Thực hành CT428 trên GitHub Codespaces — không cài lại khi đổi phòng máy
+# Thực hành CT482 trên GitHub Codespaces — không cài lại khi đổi phòng máy
+
+> Hướng dẫn đầy đủ từng buổi (Buổi 0: đăng ký và tạo codespace, Buổi 1–7 bản Codespaces, trang giảng viên) nằm trong thư mục [`huong-dan/`](huong-dan/) và trên Notion của học phần.
 
 ## 1. Ý tưởng
 
@@ -23,12 +25,12 @@ Cấu hình nằm trong thư mục `.devcontainer/`. Cùng cấu hình này cũn
 3. Vào **Packages → bigdata-lab → Package settings → Change visibility → Public** (package mới mặc định là Private, sinh viên sẽ không tải được).
 4. Sửa `.devcontainer/cau-hinh.env`: `LAB_IMAGE=ghcr.io/<owner>/bigdata-lab:2026.10` (chữ thường), commit.
    Nếu bỏ qua bước 2–4, codespace vẫn chạy được nhưng tự build từ Dockerfile ở lần tạo đầu.
-5. Phát cho sinh viên: link repo template, hoặc tạo bài tập **GitHub Classroom** dùng repo này làm starter code và bật *Supported editor: GitHub Codespaces*.
+5. Phát cho sinh viên: link repo template (sinh viên *Use this template* → repo Private riêng, thêm GV làm collaborator). GitHub Classroom đã ngừng từ 28/08/2026 nên không dùng nữa.
 
 ## 3. Sinh viên — lần đầu (khoảng 5–15 phút, chỉ một lần)
 
 1. Có tài khoản GitHub; nên xác minh **GitHub Student Developer Pack** bằng email trường để có quota lớn hơn (mục 5).
-2. Mở repo (bản của mình: *Use this template* hoặc repo GitHub Classroom) → **Code → Codespaces → `...` → New with options** → Machine type **2-core** (mặc định; chọn 4-core nếu cần chạy nhanh hơn) → **Create codespace**.
+2. Mở repo (bản của mình: *Use this template*) → **Code → Codespaces → `...` → New with options** → Machine type **2-core** (mặc định; chọn 4-core nếu cần chạy nhanh hơn) → **Create codespace**.
 3. Chờ log tạo xong (tải image, sinh dữ liệu mẫu, tự bật cụm lõi). Khi terminal hiện `Cụm đã sẵn sàng`, gõ:
    ```bash
    lab status     # 8 container healthy, Live datanodes (2), Total Nodes:2
@@ -53,7 +55,7 @@ Codespaces tính theo **core-hour** (số nhân × số giờ chạy) và **dung
 | Sinh viên đã xác minh (Student Pack) | 180 | 45 giờ | 90 giờ | 20 GB |
 
 Ví dụ buổi thực hành 3 giờ: máy 2 nhân tốn 6 core-hour, máy 4 nhân tốn 12 core-hour → sinh viên đã xác minh đủ khoảng 30 buổi/tháng (2 nhân) hoặc 15 buổi/tháng (4 nhân).
-Khi dùng qua **GitHub Classroom**, chi phí codespace của repo bài tập được tính cho Organization của lớp (giảng viên đã xác minh có hạn mức Codespaces Education riêng), không trừ vào quota cá nhân sinh viên.
+GitHub Classroom và hạn mức Codespaces theo lớp đã chấm dứt từ 28/08/2026; mỗi sinh viên dùng quota cá nhân (giáo viên và sinh viên đã xác minh: 180 core-hour, 20 GB mỗi tháng).
 
 **Mặc định là máy 2 nhân / 8 GB** (`hostRequirements` trong `.devcontainer/devcontainer.json`): đủ cho cụm lõi cộng dịch vụ bổ sung của **một** bài (`lab hive`, `lab nosql` hoặc `lab kafka`; tắt bằng `lab stop-extras` khi xong). Không nên bật **tất cả** dịch vụ bổ sung cùng lúc trên máy này: đo trên Codespaces thật chỉ còn ~2 GB RAM trống, job Spark có thể lỗi ngẫu nhiên (mục 8). Máy 4 nhân / 16 GB chạy nhanh hơn khoảng 1,6 lần nhưng tốn gấp đôi quota — nên dùng cho bài nặng (MLlib, dữ liệu 5 triệu dòng).
 
@@ -93,3 +95,10 @@ Chưa kiểm chứng trên Codespaces thật: dừng/mở lại codespace, tài 
 Hai lỗi phát hiện khi kiểm thử và đã xử lý trong script:
 - Kernel Linux mới (máy kiểm thử dùng 7.0) không còn iptables legacy → Docker-in-Docker không khởi động. `docker-san-sang.sh` tự chuyển sang iptables-nft.
 - Docker Compose bản mới (build qua bake) từ chối `network: host` trong `docker-compose.yml` khi không có TTY (`pass "--allow=network.host"`). `khoi-tao.sh` gọi thẳng `docker build --network host`.
+
+## 9. Cập nhật 06/11/2026
+
+- Đã chạy trọn Buổi 0–7 với 5 triệu dòng trên bản sao Dev Container (2 nhân / 8 GB): mọi bước đạt, không OOM. Buổi 7 (MLlib) khuyến nghị máy 4 nhân / 16 GB; trên 2 nhân phải mở PySpark một executor.
+- Đĩa lúc cao nhất: Buổi 1 ≈ 13 GB, Buổi 3 ≈ 16 GB (image Hive + Tez) — sát hoặc vượt 15 GB của tài khoản Free. `lab stop-extras` nay dọn dữ liệu tạm Tez.
+- `lab status` in thêm RAM cả máy, đĩa Docker, số dòng dữ liệu; `lab ui` thêm NodeManager/DataNode/RegionServer; `DATA_ROWS=5000000`; forward cổng 4041; `.gitignore` thêm `__pycache__/`, `*.pyc`, `.venv/`.
+- Package `ghcr.io/tttquyen/bigdata-lab` cần chuyển **Public** trước khi phát cho sinh viên (kiểm tra 05/11/2026: tải ẩn danh bị từ chối).
